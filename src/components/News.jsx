@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Page1 = React.createClass({
+var NewsPage = React.createClass({
     render: function() {
         return (
             <h1>News!</h1>
@@ -8,4 +8,4 @@ var Page1 = React.createClass({
     }
 });
 
-module.exports = Page1;
+module.exports = NewsPage;

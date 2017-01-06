@@ -4,8 +4,6 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var HashHistory = ReactRouter.hashHistory;
 
-HashHistory.queryKey = false;
-
 var Base = require('./components/Base.jsx');
 var News = require('./components/News.jsx');
 var Photos = require('./components/Photos.jsx');
