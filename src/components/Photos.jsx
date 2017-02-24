@@ -3,7 +3,9 @@ var React = require('react');
 var PhotosPage = React.createClass({
     render: function() {
         return (
-            <h1>Photos!</h1>
+            <div>
+                <h1>Photos?{this.props.test}</h1>
+            </div>
         );
     }
 });

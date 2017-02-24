@@ -25162,10 +25162,9 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var HashHistory = ReactRouter.hashHistory;
 
-HashHistory.queryKey = false;
-
 var Base = require('./components/Base.jsx');
 var News = require('./components/News.jsx');
+var Article = require('./components/Article.jsx');
 var Photos = require('./components/Photos.jsx');
 
 var Routes = React.createElement(
@@ -25175,13 +25174,50 @@ var Routes = React.createElement(
         Route,
         { path: '/', component: Base },
         React.createElement(Route, { path: '/news', component: News }),
+        React.createElement(Route, { path: '/article', component: () => React.createElement(Article, { title: 'value', subTitle: 'best test content ever', bodyText: 'some really great words.', location2: 'just the best place ever' }) }),
         React.createElement(Route, { path: '/photos', component: Photos })
     )
 );
 
 module.exports = Routes;
 
-},{"./components/Base.jsx":234,"./components/News.jsx":235,"./components/Photos.jsx":236,"react":230,"react-router":199}],234:[function(require,module,exports){
+},{"./components/Article.jsx":234,"./components/Base.jsx":235,"./components/News.jsx":236,"./components/Photos.jsx":237,"react":230,"react-router":199}],234:[function(require,module,exports){
+var React = require('react');
+
+var Article = React.createClass({
+    displayName: 'Article',
+
+    render: function () {
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'h1',
+                null,
+                this.props.title
+            ),
+            React.createElement(
+                'h3',
+                null,
+                this.props.subTitle
+            ),
+            React.createElement(
+                'div',
+                null,
+                this.props.bodyText
+            ),
+            React.createElement(
+                'span',
+                null,
+                this.props.location2
+            )
+        );
+    }
+});
+
+module.exports = Article;
+
+},{"react":230}],235:[function(require,module,exports){
 var React = require('react');
 
 var Base = React.createClass({
@@ -25208,45 +25244,58 @@ var Base = React.createClass({
 
 module.exports = Base;
 
-},{"react":230}],235:[function(require,module,exports){
-var React = require('react');
-
-var Page1 = React.createClass({
-    displayName: 'Page1',
-
-    render: function () {
-        return React.createElement(
-            'h1',
-            null,
-            'News!'
-        );
-    }
-});
-
-module.exports = Page1;
-
 },{"react":230}],236:[function(require,module,exports){
 var React = require('react');
+var Article = require('./Article.jsx');
 
-var Page1 = React.createClass({
-    displayName: 'Page1',
+var NewsPage = React.createClass({
+    displayName: 'NewsPage',
 
     render: function () {
         return React.createElement(
-            'h1',
+            'div',
             null,
-            'Photos!'
+            React.createElement(
+                'h1',
+                null,
+                'News!'
+            ),
+            React.createElement('hr', null),
+            React.createElement(Article, { title: 'Shocking Story!', subTitle: 'best test content ever', bodyText: 'some really great words.', location2: 'just the best place ever' }),
+            React.createElement(Article, { title: 'Click here to find out more!', subTitle: 'I\'m wasting your time', bodyText: 'some really great words.', location2: 'just the best place ever' })
         );
     }
 });
 
-module.exports = Page1;
+module.exports = NewsPage;
 
-},{"react":230}],237:[function(require,module,exports){
+},{"./Article.jsx":234,"react":230}],237:[function(require,module,exports){
+var React = require('react');
+
+var PhotosPage = React.createClass({
+    displayName: 'PhotosPage',
+
+    render: function () {
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'h1',
+                null,
+                'Photos?',
+                this.props.test
+            )
+        );
+    }
+});
+
+module.exports = PhotosPage;
+
+},{"react":230}],238:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Routes = require('./Routes.jsx');
 
 ReactDOM.render(Routes, document.getElementById('container'));
 
-},{"./Routes.jsx":233,"react":230,"react-dom":46}]},{},[237]);
+},{"./Routes.jsx":233,"react":230,"react-dom":46}]},{},[238]);
